@@ -1,0 +1,6 @@
+side,same,same,same,same,opps,opps,opps,opps
+event,DC  ,DT  ,DT+F,F   ,DC  ,DT  ,DT+F,F   
+DC  ,3,0,17,3323,1,0,302,164
+DT  ,0,3,101,2699,1,0,410,820
+DT+F,1,1,19,657,0,2,134,169
+F   ,2718,1108,0,3,1086,2920,0,4
