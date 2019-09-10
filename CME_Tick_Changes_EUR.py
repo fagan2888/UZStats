@@ -271,9 +271,6 @@ ABSDEPL_STATS_TS = pd.concat([PRIOR_ABSDEPL_STATS_TS, AFTER_ABSDEPL_STATS_TS], s
 # ### Tables
 
 # %%
-OB_UZ_STATS.loc['2015-06-29']
-
-# %%
 TABLE_MATHIEU = cme.table_mathieu(OB_UZ_STATS)
 TABLE_MATHIEU_ERR = cme.table_mathieu_err(OB_UZ_STATS)
 

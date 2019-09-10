@@ -360,7 +360,7 @@ def time_series_plot(database, field, title, y_min=0):
         df_plot[field], np.nan)
     df_plot[['prior', 'after']].plot(figsize=(9,6), title=title,\
         marker='.', linestyle='None')
-    plt.ylim(ymin=y_min)
+    plt.ylim(bottom=y_min)
 
 def twspr_plot_USD(database, title):
     df_plot = database[['twspr1', 'Tick', 'Status']].copy()
