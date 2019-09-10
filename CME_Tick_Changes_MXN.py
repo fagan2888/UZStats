@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.2'
-#       jupytext_version: 1.2.1
+#       jupytext_version: 1.2.3
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -52,7 +52,7 @@ import cme_processing as cme
 
 # %%
 PATHPROJ = '/Users/marcoscscarreira/Documents/X/CME project/CME_data/'
-#URL_ROOT = 'https://raw.githubusercontent.com/MarcosCarreira/UZStats/master/CME_data/'
+URL_ROOT = 'https://raw.githubusercontent.com/MarcosCarreira/UZStats/master/CME_data/'
 
 # %%
 CURR = 'MXN'
@@ -62,11 +62,11 @@ PATH_PRIOR = PATHPROJ+CURR+'/prior/'
 PATH_AFTER = PATHPROJ+CURR+'/after/'
 URL_1 = CURR+'/prior/'
 URL_2 = CURR+'/after/'
-#PATH_PRIOR = URL_ROOT+URL_EUR_1
-#PATH_AFTER = URL_ROOT+URL_EUR_2
+#PATH_PRIOR = URL_ROOT+URL_1
+#PATH_AFTER = URL_ROOT+URL_2
 
 # %%
-TRADING_HOURS = 9
+TRADING_HOURS = 8
 
 # %%
 TICK_PRIOR = 12.5
