@@ -509,7 +509,7 @@ sns.scatterplot(x='eta1', y='Fill same-oppo', hue='Status',\
 plt.title('Fill and $\eta$ : '+CURR);
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'twspr1', 'Spread in Ticks : '+CURR, 0)
+cme.time_series_plot(OB_UZ_STATS, 'twspr1', 'Spread in Ticks : '+CURR)
 
 # %%
 cme.twspr_plot_USD(OB_UZ_STATS, CURR)
