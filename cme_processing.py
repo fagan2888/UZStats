@@ -15,6 +15,9 @@ import seaborn as sns
 import statsmodels.api as sm
 import glob
 
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
 # Load files
 
 def list_files(path):
@@ -402,6 +405,37 @@ def regr_plot(database, field1, field2, title, robust=False):
     sns.lmplot(x=field1, y=field2, hue='Status', aspect=1, \
             height=7, data=database, robust=robust);
     plt.title(title)
+
+def time_series_hist_plot(database, field, title, bottom, top,\
+    bins=0, color_prior='b', color_after='r'):
+    fig = plt.figure(figsize=(12, 8), dpi=100)
+    grid = plt.GridSpec(4, 5, hspace=0.5, wspace=1.0)
+    if bins == 0:
+        bins = int(np.round((top-bottom)*100))
+    ax_main = fig.add_subplot(grid[:-1, :-1])
+    prior_data = database[database['Status'] == 'prior'].copy()
+    after_data = database[database['Status'] == 'after'].copy()
+    ax_main.plot(prior_data[field], marker='.', linestyle='None',\
+        color=color_prior, label='prior')
+    ax_main.plot(after_data[field], marker='.', linestyle='None',\
+        color=color_after, label='after')
+    ax_main.legend()
+    ax_main.set_ylim(bottom=bottom, top=top)
+    flag = ''
+    if database[field].min() < bottom:
+        flag = flag+' min outside '
+    if database[field].max() > top:
+        flag = flag+' max outside '
+    plt.title(title+flag)
+    ax_right = fig.add_subplot(grid[:-1, -1],\
+        xticklabels=[],\
+        yticklabels=np.round(ax_main.yaxis.get_majorticklocs(), 3))
+    ax_right.hist(prior_data[field], bins=bins, range=(bottom, top),\
+        orientation='horizontal', color=color_prior, alpha=0.5)
+    ax_right.hist(after_data[field], bins=bins, range=(bottom, top),\
+        orientation='horizontal', color=color_after, alpha=0.5)
+    ax_right.set_ylim(bottom=bottom, top=top)
+    plt.show()
 
 # Eta prediction
 

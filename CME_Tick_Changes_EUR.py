@@ -62,8 +62,8 @@ PATH_PRIOR = PATHPROJ+CURR+'/prior/'
 PATH_AFTER = PATHPROJ+CURR+'/after/'
 URL_1 = CURR+'/prior/'
 URL_2 = CURR+'/after/'
-PATH_PRIOR = URL_ROOT+URL_1
-PATH_AFTER = URL_ROOT+URL_2
+#PATH_PRIOR = URL_ROOT+URL_1
+#PATH_AFTER = URL_ROOT+URL_2
 
 # %%
 TRADING_HOURS = 8
@@ -302,16 +302,16 @@ sns.scatterplot(x='eta1', y='Pred_Imbal_Relat', hue='Status',\
 plt.title('Relative predictive power of imbalance and $\eta$ : '+CURR);
 
 # %%
-cme.time_series_plot(IMBAL_STATS_TS, 'Pred_Imbal_Relat',\
-    'Relative predictive power of imbalance : '+CURR, -1)
+cme.time_series_hist_plot(IMBAL_STATS_TS, 'Pred_Imbal_Relat',\
+    'Relative predictive power of imbalance : '+CURR, -1.0, 4.0, 50)
 
 # %%
-cme.time_series_plot(ABSDEPL_STATS_TS, 'Depl_Cancel',\
-    'Depl_Cancel : '+CURR, -1)
+cme.time_series_hist_plot(ABSDEPL_STATS_TS, 'Depl_Cancel',\
+    'Depl_Cancel : '+CURR, 0.0, 50000.0, 50)
 
 # %%
-cme.time_series_plot(ABSDEPL_STATS_TS, 'Depl_Trades',\
-    'Depl_Trades : '+CURR, -1)
+cme.time_series_hist_plot(ABSDEPL_STATS_TS, 'Depl_Trades',\
+    'Depl_Trades : '+CURR, 0.0, 70000.0, 50)
 
 # %%
 cme.regr_plot(ABSDEPL_STATS_TS, 'M', 'Depl_Cancel',\
@@ -334,28 +334,28 @@ cme.lin_reg(PRIOR_ABSDEPL_STATS_TS, ['M'], 'Depl_Trades')
 cme.lin_reg(AFTER_ABSDEPL_STATS_TS, ['M'], 'Depl_Trades')
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'Depl_Cancel',\
-    'Depl_Cancel : '+CURR, -1)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'Depl_Cancel',\
+    'Depl_Cancel : '+CURR, 0, 45, 50)
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'DC same-oppo',\
-    'DC same-oppo : '+CURR, -1)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'DC same-oppo',\
+    'DC same-oppo : '+CURR, 0, 30, 50)
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'Depl_Trade',\
-    'Depl_Trade : '+CURR, -1)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'Depl_Trade',\
+    'Depl_Trade : '+CURR, 0, 40, 50)
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'DT same-oppo',\
-    'DT same-oppo : '+CURR, -1)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'DT same-oppo',\
+    'DT same-oppo : '+CURR, -2, 20, 50)
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'DT+F same-oppo',\
-    'DT+F same-oppo : '+CURR, -1)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'DT+F same-oppo',\
+    'DT+F same-oppo : '+CURR, -1, 6, 50)
 
 # %%
-cme.time_series_plot(DEPL_STATS_TS, 'Fill same-oppo',\
-    'Filled : Same - Opposite : '+CURR, -20)
+cme.time_series_hist_plot(DEPL_STATS_TS, 'Fill same-oppo',\
+    'Filled : Same - Opposite : '+CURR, -15, 25, 50)
 
 # %%
 plt.figure(figsize=(9, 6))
@@ -382,29 +382,35 @@ sns.scatterplot(x='eta1', y='Fill same-oppo', hue='Status',\
 plt.title('Fill and $\eta$ : '+CURR);
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'twspr1', 'Spread in Ticks : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'twspr1',\
+    'Spread in Ticks : '+CURR, 1, 2, 50)
 
 # %%
 cme.twspr_plot_USD(OB_UZ_STATS, CURR)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'eta1', '$\eta$ : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'eta1',\
+    '$\eta$ : '+CURR, 0, 0.5, 50)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'rvxe',\
-    'Estimated Volatility of Efficient Prices : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'chgavg',\
+    'Average Price Change : '+CURR, 0.4, 1.4, 50)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'ndfpr',\
-    'Number of Price Changes : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'rvxe',\
+    'Estimated Volatility of Efficient Prices : '+CURR, 0, 0.015, 50)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'M',\
-    'Number of Trades : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'ndfpr',\
+    'Number of Price Changes : '+CURR, 0, 60000, 50)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS, 'Volume',\
-    'Volume : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS, 'M',\
+    'Number of Trades : '+CURR, 0, 150000, 50)
+
+# %%
+cme.time_series_hist_plot(OB_UZ_STATS, 'Volume',\
+    'Volume : '+CURR, 0, 500000, 50)
 
 # %%
 cme.scatter_plot(OB_UZ_STATS, 'chgavg', 'eta1',\
@@ -609,12 +615,12 @@ TRADE_STATS_TS.loc['2015-09-26':].plot(secondary_y=['Pred_Trade_Relat'], figsize
 OB_UZ_STATS_SPREADS = cme.spread_stats(OB_UZ_STATS)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS_SPREADS, 'bid1qty',\
-    'Level 1 Bid Average Amount : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS_SPREADS, 'bid1qty',\
+    'Level 1 Bid Average Amount : '+CURR, 0, 80, 50)
 
 # %%
-cme.time_series_plot(OB_UZ_STATS_SPREADS, 'ask1qty',\
-    'Level 1 Ask Average Amount : '+CURR)
+cme.time_series_hist_plot(OB_UZ_STATS_SPREADS, 'ask1qty',\
+    'Level 1 Ask Average Amount : '+CURR, 0, 80, 50)
 
 # %%
 OB_UZ_STATS_SPREADS[['bid1qty', 'ask1qty']].plot(figsize=(9,6));
