@@ -287,6 +287,18 @@ cme.avg_perc_mat(PRIOR_IMBAL_STATS, pd.to_datetime(PRIOR_CDATES['Date']))
 cme.avg_perc_mat(AFTER_IMBAL_STATS, pd.to_datetime(AFTER_CDATES['Date']))
 
 # %%
+AVG_IMBAL_PRIOR = cme.avg_perc_mat(PRIOR_IMBAL_STATS, pd.to_datetime(PRIOR_CDATES['Date']))
+plt.figure(figsize=(9, 6))
+sns.heatmap(AVG_IMBAL_PRIOR.iloc[:-1].drop(columns=['Total Cols']),\
+    annot=True, fmt=".1f",\
+    linewidths=.5, square=True,\
+    xticklabels=True,\
+    yticklabels=False,\
+    cbar=False);
+
+# %%
+
+# %%
 cme.avg_perc_mat_2(PRIOR_DEPL_STATS, pd.to_datetime(PRIOR_CDATES['Date']))
 
 # %%
